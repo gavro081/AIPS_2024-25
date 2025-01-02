@@ -7,11 +7,8 @@ public class Lab7 {
 
     static int solve(BTree<String> tree, BNode<String> node){
         if (node == null || (node.left == null && node.right == null)) return 0;
-        int ctr = 0;
         if (node.left != null && node.right != null) return 1 + solve(tree, node.left) + solve(tree,node.right);
-        if (node.left != null) ctr += solve(tree, node.left);
-        if (node.left != null) ctr += solve(tree, node.right);
-        return ctr;
+        return solve(tree, node.left) + solve(tree,node.right);
     }
 
     public static void main(String[] args) {
