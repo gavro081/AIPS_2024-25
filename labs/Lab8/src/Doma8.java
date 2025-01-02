@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class Doma8 {
-    static int find_depth(BNode<Integer> node, int val, int ctr){
-        if (node.info == val) return ctr;
-        if (val > node.info) return find_depth(node.right, val, ctr + 1);
-        else return find_depth(node.left, val, ctr + 1);
+    static int find_depth(BNode<Integer> node, int val){
+        if (node.info == val) return 1;
+        if (val > node.info) return 1 + find_depth(node.right, val);
+        else return 1 + find_depth(node.left, val);
     }
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -20,7 +20,7 @@ public class Doma8 {
                 tree.insert(Integer.parseInt(parts[1]));
             }
             else {
-                System.out.println(find_depth(tree.getRoot(), Integer.parseInt(parts[1]), 1));
+                System.out.println(find_depth(tree.getRoot(), Integer.parseInt(parts[1])));
             }
         }
     }
